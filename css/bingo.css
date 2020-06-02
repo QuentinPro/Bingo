@@ -1,0 +1,29 @@
+body{
+	background-image: url(../images/rift.jpg);
+
+}
+nav{
+	background-color: rgb(35, 35, 35);
+	opacity: .8
+	
+}
+
+
+.navbar-brand h2{
+	color: white;
+	text-transform: uppercase;
+	font-size: 24px;
+    font-weight: 700;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+}
+
+footer{
+    margin-bottom: 0px;
+    font-size: 14px;
+    font-weight: 300;
+    color: #4a4a4a;
+    line-height: 24px;
+    background-color: rgb(35, 35, 35);
+	opacity: .5
+}
