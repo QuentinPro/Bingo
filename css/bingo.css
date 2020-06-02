@@ -18,6 +18,18 @@ nav{
     margin-block-end: 0.83em;
 }
 
+
+tr{
+	height: 10em;
+	background-color: white;
+	opacity: .5;
+	font-weight: 800;
+}
+
+td{
+	text-align: center;
+}
+
 footer{
     margin-bottom: 0px;
     font-size: 14px;
