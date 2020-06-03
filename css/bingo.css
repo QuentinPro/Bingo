@@ -21,13 +21,13 @@ nav{
 
 tr{
 	height: 10em;
-	background-color: white;
-	opacity: .5;
 	font-weight: 800;
 }
 
-td{
+td, button{
 	text-align: center;
+	opacity: .5;
+	background-color: white;
 }
 
 footer{
@@ -38,4 +38,8 @@ footer{
     line-height: 24px;
     background-color: rgb(35, 35, 35);
 	opacity: .5
+}
+
+.clicked{
+	opacity: 1; 
 }
