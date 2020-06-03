@@ -8,6 +8,10 @@ nav{
 	
 }
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
 
 .navbar-brand h2{
 	color: white;
@@ -28,6 +32,7 @@ td, button{
 	text-align: center;
 	opacity: .5;
 	background-color: white;
+  	vertical-align: middle;
 }
 
 footer{
@@ -42,4 +47,8 @@ footer{
 
 .clicked{
 	opacity: 1; 
+}
+
+.reset{
+	width: 100%;
 }
