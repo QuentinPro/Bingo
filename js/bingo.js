@@ -12,9 +12,8 @@ $(".reset").click(function() {
 
 
 function show(){
-    if ($(".h-1", this) && $(".h-2", this) && $(".h-3", this) && $(".h-4", this).hasClass('clicked')){
+    if ($(".h-1", this).hasClass('clicked') && $(".h-2", this).hasClass('clicked') && $(".h-3", this).hasClass('clicked') && $(".h-4", this).hasClass('clicked')){
         $(".hidden").show();
-        // alert("Félicitations, vous avez remporté le bingo de la toxicité pour cette partie! (malheureusement)");
     }
 }
 
