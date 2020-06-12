@@ -1,5 +1,5 @@
 body{
-	background-image: url(../images/rift.jpg);
+	 transition: 10s;
 
 }
 nav{
@@ -51,6 +51,7 @@ footer{
 
 .reset{
 	width: 100%;
+	font-weight: 700;
 }
 
 @-webkit-keyframes clignote {

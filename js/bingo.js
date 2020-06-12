@@ -68,3 +68,21 @@ function condition_diagonale_deux(){
 }
 
 $(".d-5, .d-6, .d-7, .d-8").click(condition_diagonale_deux);
+
+
+$(function() {
+  var body = $('body');
+  var backgrounds = ['url(images/rift.jpg)', 'url(images/second_rift.jpg)', 'url(images/another_one.jpg)', 'url(images/summoners.jpg)'];
+var current = 0;
+
+function nextBackground() {
+  body.css(
+   'background',
+    backgrounds[current = ++current % backgrounds.length]
+ );
+
+ setTimeout(nextBackground, 30000);
+ }
+ setTimeout(nextBackground, 30000);
+   body.css('background', backgrounds[0]);
+ });
