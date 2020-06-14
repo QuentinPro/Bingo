@@ -81,8 +81,8 @@ function nextBackground() {
     backgrounds[current = ++current % backgrounds.length]
  );
 
- setTimeout(nextBackground, 30000);
+ setTimeout(nextBackground, 15000);
  }
- setTimeout(nextBackground, 30000);
+ setTimeout(nextBackground, 15000);
    body.css('background', backgrounds[0]);
  });
