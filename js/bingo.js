@@ -1,74 +1,72 @@
-$(".hidden").hide();
-
-$("td").on("click", function(){
-	
-	$(this).toggleClass("clicked");
-	$(this).removeClass("win");
-});
-
 $(".reset").click(function() {
 	$("td").removeClass("clicked");
-	$("td").removeClass("win");
+	$(".flex-row").removeClass("win");
 });
 
+$(".table-bordered").on("click", ".flex-row .flex-cell", function() {
 
-function condition_horizontale(){
-    if ($(".h-1", this).hasClass('clicked') && $(".h-2", this).hasClass('clicked') && $(".h-3", this).hasClass('clicked') && $(".h-4", this).hasClass('clicked')){
-        $("td", this).addClass("win");
+    $(this).toggleClass("clicked");
+
+    var $board = $(this).closest(".table-bordered");
+
+    // remove all wins
+    $board.find(".win").removeClass("win");
+
+    // check for wins
+    var board = $.map($(".flex-row"), function(row, i) {
+    var cells = $.map($(row).find(".flex-cell"), function(cell, i){
+        return $(cell).hasClass("clicked")
+        
+    });
+        return [cells];
+    });
+
+    var rowCount = board.length
+    var colCount = board[0].length;
+
+    // check for win on rows
+    var winningRows = []
+    for (var i = 0; i < rowCount; i++) {
+        var rowValues = board[i];
+        var rowWin = rowValues.every(function(val) { 
+            return val
+        });
+        if (rowWin) {
+            console.log("Win on Row: " + i);
+            $board.find(".flex-row").eq(i).addClass("win");
+        }
+    };
+
+    //check for win on columns
+    for (var i = 0; i < colCount; i++) {
+        var colValues = board.map(function(row) {
+            return row[i]
+        });
+        var colWin = colValues.every(function(val) { 
+            return val
+        });
+        if (colWin) {
+            console.log("Win on Col: " + i);
+    	    $board.find(".flex-row:eq(0) .flex-cell").eq(i).addClass("win")
+        }
+    };
+
+    // check diagonal down
+    var diagDownValues = board.map(function(row, i) {return board[i][i]})
+    var diagDownWin = diagDownValues.every(function(val) { return val});
+    if (diagDownWin) {
+        console.log("Win on Down Diagonal");
+        $board.find(".flex-header .flex-cell:first-child").addClass("win")
     }
-}
 
-$("#first_lign, #second_lign, #third_lign, #fourth_lign").click(condition_horizontale);
-
-
-function condition_verticale_une(){
-    if ($("#first_lign .h-1").hasClass('clicked') && $("#second_lign .h-1").hasClass('clicked') && $("#third_lign .h-1").hasClass('clicked') && $("#fourth_lign .h-1").hasClass('clicked') ){
-        $(".h-1").addClass("win");
+    // check diagonal down
+    var diagUpValues = board.map(function(row, i) {return board[i][rowCount - i - 1]})
+    var diagUpWin = diagUpValues.every(function(val) { return val});
+    if (diagUpWin) {
+        console.log("Win on Up Diagonal");
+        $board.find(".flex-header .flex-cell:last-child").addClass("win")
     }
-}
-
-$(".h-1").click(condition_verticale_une);
-
-function condition_verticale_deux(){
-    if ($("#first_lign .h-2").hasClass('clicked') && $("#second_lign .h-2").hasClass('clicked') && $("#third_lign .h-2").hasClass('clicked') && $("#fourth_lign .h-2").hasClass('clicked') ){
-        $(".h-2").addClass("win");
-    }
-}
-
-$(".h-2").click(condition_verticale_deux);
-
-function condition_verticale_trois(){
-    if ($("#first_lign .h-3").hasClass('clicked') && $("#second_lign .h-3").hasClass('clicked') && $("#third_lign .h-3").hasClass('clicked') && $("#fourth_lign .h-3").hasClass('clicked') ){
-       $(".h-3").addClass("win");
-    }
-}
-
-$(".h-3").click(condition_verticale_trois);
-
-function condition_verticale_quatre(){
-    if ($("#first_lign .h-4").hasClass('clicked') && $("#second_lign .h-4").hasClass('clicked') && $("#third_lign .h-4").hasClass('clicked') && $("#fourth_lign .h-4").hasClass('clicked') ){
-        $(".h-4").addClass("win");
-    }
-}
-
-$(".h-4").click(condition_verticale_quatre);
-
-function condition_diagonale_une(){
-    if ($(".d-1").hasClass('clicked') && $(".d-2").hasClass('clicked') && $(".d-3").hasClass('clicked') && $(".d-4").hasClass('clicked') ){
-        $(".d-1, .d-2, .d-3, .d-4").addClass("win");
-    }
-}
-
-$(".d-1, .d-2, .d-3, .d-4").click(condition_diagonale_une);
-
-function condition_diagonale_deux(){
-    if ($(".d-5").hasClass('clicked') && $(".d-6").hasClass('clicked') && $(".d-7").hasClass('clicked') && $(".d-8").hasClass('clicked') ){
-        $(".d-5, .d-6, .d-7, .d-8").addClass("win");
-    }
-}
-
-$(".d-5, .d-6, .d-7, .d-8").click(condition_diagonale_deux);
-
+});
 
 $(function() {
   var body = $('body');
